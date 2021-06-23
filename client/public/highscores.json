@@ -1,0 +1,108 @@
+[
+    { 
+        "id": 1,
+        "game": {
+            "id": 1,
+            "title": "Tetris"
+        },
+        "player": "John Doe",
+        "date": "2019-01-01",
+        "highscore": "130 000",
+        "urlSlug": "tetris"
+    },
+    { 
+        "id": 4,
+        "game": {
+            "id": 1,
+            "title": "Tetris"
+        },
+        "player": "John Doe",
+        "date": "2019-01-01",
+        "highscore": "100 000",
+        "urlSlug": "tetris"
+    },
+    { 
+        "id": 5,
+        "game": {
+            "id": 1,
+            "title": "Tetris"
+        },
+        "player": "John Doe",
+        "date": "2019-01-01",
+        "highscore": "200 000",
+        "urlSlug": "tetris"
+    },
+   
+    
+  
+  
+ 
+    { 
+        "id": 2,
+        "game": {
+            "id": 2,
+            "title": "Pacman"
+        },
+        "player": "Jane Doe",
+        "date": "2019-02-02 ",
+        "highscore": "120 000",
+        "urlSlug": "pacman"
+    },
+    { 
+        "id": 6,
+        "game": {
+            "id": 2,
+            "title": "Pacman"
+        },
+        "player": "Jane Doe",
+        "date": "2019-02-02 ",
+        "highscore": "100 000",
+        "urlSlug": "pacman"
+    },
+    { 
+        "id": 7,
+        "game": {
+            "id": 2,
+            "title": "Pacman"
+        },
+        "player": "Jane Doe",
+        "date": "2019-02-02 ",
+        "highscore": "200 000",
+        "urlSlug": "pacman"
+    },
+    { 
+        "id": 3,
+        "game": {
+            "id": 3,
+            "title": "Asteroids"
+        },
+        "player": "Jan Doe",
+        "date": "2019-03-03",
+        "highscore": "200 000",
+        "urlSlug": "asteroids"
+    },
+    { 
+        "id": 8,
+        "game": {
+            "id": 3,
+            "title": "Asteroids"
+        },
+        "player": "Jan Doe",
+        "date": "2019-03-03",
+        "highscore": "150 000",
+        "urlSlug": "asteroids"
+    },
+    { 
+        "id": 9,
+        "game": {
+            "id": 3,
+            "title": "Asteroids"
+        },
+        "player": "Jan Doe",
+        "date": "2019-03-03",
+        "highscore": "300 000",
+        "urlSlug": "asteroids"
+    }
+  
+] 
+
