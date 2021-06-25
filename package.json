@@ -1,0 +1,44 @@
+{
+  "name": "highscore",
+  "version": "1.0.0",
+  "description": "Highscore",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "csstype": "^3.0.7",
+    "express": "^4.17.1",
+    "hoist-non-react-statics": "^3.3.2",
+    "js-tokens": "^4.0.0",
+    "loose-envify": "^1.4.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.7",
+    "object-assign": "^4.1.1",
+    "pg": "^8.6.0",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.2",
+    "react-is": "^16.13.1",
+    "react-redux": "^7.2.3",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
+    "regenerator-runtime": "^0.13.7",
+    "request": "^2.88.2",
+    "sequelize": "^6.6.2",
+    "symbol-observable": "^1.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --watch backend --exec node --experimental-modules backend/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ernestoneyra/highscore.git"
+  },
+  "author": "Ernesto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ernestoneyra/highscore/issues"
+  },
+  "homepage": "https://github.com/ernestoneyra/highscore#readme"
+}
