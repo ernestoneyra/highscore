@@ -1,4 +1,5 @@
 const express = require('express')
+const bodyParser = require('body-parser')
 const cors = require('cors')
 const expressAsyncHandler = require('express-async-handler')
 const morgan = require('morgan')
@@ -9,6 +10,11 @@ const playersRouter = require('./routes/admin/playersRouter.js')
 
 
 const app = express();
+//middleware
+app.use(cors())
+app.use(express.json())
+
+app.use(bodyParser.urlencoded({extended: true}))
 
 //API
 app.use("/api/games", gamesRouter);
@@ -16,9 +22,7 @@ app.use("/api/scores", highscoresRouter);
 app.use('/api/players', playersRouter)
 
 
-//middleware
-app.use(cors())
-app.use(express.json())
+
 
 //ROUTES highscores
 /* app.get('/seed', (req, res) => {

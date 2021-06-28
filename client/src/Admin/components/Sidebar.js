@@ -43,27 +43,8 @@ export default function Sidebar() {
             </div>
           </Row>
 
-          <Row>
-            <div className="col-1">
-              <img src="./cute.jpg" alt="game"></img>
-            </div>
-            <div className="col-5 mb-1">
-              <Link to={"/admin/viewgames"} className="black">
-                <h5>View game</h5>
-              </Link>
-            </div>
-          </Row>
 
-          <Row>
-            <div className="col-1">
-              <img src="./cute.jpg" alt="game"></img>
-            </div>
-            <div className="col-5 mb-1">
-              <Link to={"/admin/updategames"} className="black">
-                <h5>Update game</h5>
-              </Link>
-            </div>
-          </Row>
+          
 
           <Row>
             <div className="col-1">

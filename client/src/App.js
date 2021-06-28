@@ -37,13 +37,13 @@ const App = (props) => {
           <Route path="/games/:slug">
             <GameDetail scores={props.scores} games={props.games} />
           </Route>
-
+          <Route path="/admin/games/:slug" component={ViewGames} />
           <Route path="/admin/listplayers" component={ListPlayers} />
           <Route path="/admin/addplayers" component={AddPlayers} />
           <Route path="/admin/listgames" component={ListGames} />
           <Route path="/admin/addgames" component={AddGames} />
-          <Route path="/admin/viewgames" component={ViewGames} />
-          <Route path="/admin/updategames" component={UpdateGames} />
+         {/*  <Route path="/admin/viewgames" component={ViewGames} /> */}
+          <Route path="/admin/update/:url_slug" component={UpdateGames} />
           <Route path="/admin/addhighscore" component={AddHighscore} />
           <Route path="/admin/listhighscore" component={ListHighscore} />
           <Route exact path="/admin" component={AdminScreen} />

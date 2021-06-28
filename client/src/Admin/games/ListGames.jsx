@@ -24,6 +24,7 @@ export default function ListGames() {
     getGames();
   }, []);
 
+  console.log('listgames', games)
   return (
     <>
       <Navbar />

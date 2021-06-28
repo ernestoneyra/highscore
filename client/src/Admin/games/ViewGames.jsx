@@ -1,9 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import { Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-export default function ViewGames() {
+export default function ViewGames(props) {
+  const [games, setGames] = useState([]);
+  const slug = props.match.params.slug;
+
+  const getGames = async () => {
+    try {
+      const { data } = await axios.get(
+        `http://localhost:5000/api/games/${slug}`
+      );
+      const games = data;
+
+      setGames([games]);
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
+  useEffect(() => {
+    getGames();
+  }, []);
+
+  
+
   return (
     <>
       <Navbar />
@@ -12,57 +36,67 @@ export default function ViewGames() {
           <Sidebar />
         </Col>
         <Col className="col-6">
-          <h1>View Games</h1>
-          <form>
+          <h1>Spelinfo</h1>
+          {games.map((game) => (
+            <form key={game.id} className="mt-4">
+              <div className="mb-3">
+                <label htmlFor={game.title} className="form-label">
+                  Spel
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id={game.title}
+                  placeholder={game.title}
+                  disabled
+                />
+              </div>
 
-            <div class="mb-3">
-              <label htmFor="title" class="form-label">
-                Titel
-              </label>
-              <input type="text" class="form-control" id="title" placeholder="Tetris" disabled/>
-            </div>
+              <div className="mb-3">
+                <label htmlFor={game.description} className="form-label">
+                  Beskrivning
+                </label>
+                <textarea
+                  className="form-control"
+                  id={game.description}
+                  rows="3"
+                  placeholder={game.description}
+                  disabled
+                ></textarea>
+              </div>
 
-            <div class="mb-3">
-              <label htmlFor="description" class="form-label">
-                Beskrivning
-              </label>
-              <textarea
-                class="form-control"
-                id="description"
-                rows="3"
-                placeholder="Example text of games description"
-                disabled
-              ></textarea>
-            </div>
+              <div className="mb-3">
+                <label htmlFor={game.genre} className="form-label">
+                  Genre
+                </label>
+                <select className="form-select" id={game.genre} disabled>
+                  <option defaultValue>{game.genre}</option>
+                </select>
+              </div>
 
-            <div className="mb-3">
-            <label htmlFor="genre" class="form-label">
-                Genre
-              </label>
-              <select class="form-select" id="genre" disabled>
-              <option selected>Välj genre</option>
-              <option value="1">Puzzel</option>
-              <option value="2">Action</option>
-              <option value="3">Shoot 'em up</option>
-              <option value="3">Äventyr</option>
-              <option value="3">Plattform</option>
-            </select>
-            </div>
-            
-            <div class="mb-3">
-              <label htmFor="image" class="form-label">
-                Bild
-              </label>
-              <input type="text" class="form-control" id="image" placeholder="Ange URL" disabled/>
-            </div>
+              <div className="mb-3">
+                <label htmlFor={game.image_url} className="form-label">
+                  Bild
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id={game.image_url}
+                  placeholder={game.image_url}
+                  disabled
+                />
+              </div>
+              <Link to={`/admin/update/${game.url_slug}`}>
+                <button type="submit" className="btn btn-primary">
+                  Uppdatera
+                </button>
+              </Link>
 
-            <button type="submit" class="btn btn-primary">
-              Uppdatera
-            </button>
-            <button type="submit" class="btn btn-primary ms-4">
-              Radera
-            </button>
-          </form>
+              <button type="submit" className="btn btn-primary ms-4">
+                Radera
+              </button>
+            </form>
+          ))}
         </Col>
       </Row>
     </>

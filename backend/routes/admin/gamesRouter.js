@@ -2,6 +2,8 @@
 import expressAsyncHandler from "express-async-handler";
 import data from '../data.js'
 import Games from '../models/games.js */
+
+
 const express = require('express')
 const expressAsyncHandler = require('express-async-handler')
 const morgan = require('morgan')
@@ -28,6 +30,8 @@ gamesRouter.get(
   })
 ); */
 
+
+
 gamesRouter.get(
   "/:url_slug",
   expressAsyncHandler(async (req, res) => {
@@ -44,21 +48,44 @@ gamesRouter.get(
   })
 );
 
-gamesRouter.post('/games', expressAsyncHandler(async (req, res) => {
+/* gamesRouter.post('/games', expressAsyncHandler(async (req, res) => {
   const {
     title,
     genre,
     description,
-    release_year,
     image_url,
     url_slug
   } = req.body; 
 
   const games = await pool.query("INSERT INTO games VALUES($1)", games)
   res.json(games)
-})) 
+}))  */
 
-/* gamesRouter.post('/games', expressAsyncHandler(async (req, res) => {
+gamesRouter.post('/games', (req, res) => {
+
+const title = req.body.title
+const description = req.body.description
+const image_url = req.body.image_url
+
+const games = Games.create({
+  title,
+
+  description,
+  image_url,
+  url_slug: generateUrlSlug(title)
+
+})
+const createdGames =  games.save()
+  res.send({ message: "Game created", games: createdGames });
+  console.log(createdGames)
+
+  /* const sqlInsert = "INSERT INTO games (title, description, image_url) VALUES (?,?,?)"
+  pool.query(sqlInsert, [title, description, image_url], (err, result) => {
+console.log(result)
+  }) */
+})
+
+/*  gamesRouter.post('/games', expressAsyncHandler(async (req, res) => {
   const {
     title,
     genre,
@@ -79,7 +106,7 @@ gamesRouter.post('/games', expressAsyncHandler(async (req, res) => {
   )
   const createdGames = await games.save()
   res.send({ message: "Game created", games: createdGames });
-})) */
+}))  */
 
 
 /* gamesRouter.post(
@@ -99,18 +126,20 @@ gamesRouter.post('/games', expressAsyncHandler(async (req, res) => {
   })
 ); */
 
+
+///////////UPDATE GAME/////////////////
 gamesRouter.put(
-  "/url_slug",
+  "/:url_slug",
   expressAsyncHandler(async (req, res) => {
-    const gamesSlug = req.params.id;
-    const games = await Product.findById(gamesSlug);
+    const gamesSlug = req.params.url_slug;
+    const games = await Games.findOne({where: {url_slug: gamesSlug }});
     if (games) {
       games.title = req.body.title;
-      games.genre = req.body.genre;
+      //games.genre = "sample genre";
       games.description = req.body.description;
-      games.release_year = req.body.release_year;
+      //games.release_year = req.body.release_year;
       games.image_url = req.body.image_url;
-      games.url_slug = req.body.url_slug;
+      //games.url_slug = gamesSlug;
       const updatedGames = await games.save();
       res.send({ message: "Games Updated", games: updatedGames });
     } else {
@@ -119,13 +148,15 @@ gamesRouter.put(
   })
 );
 
+
+////////////////DELETE GAME////////////////
 gamesRouter.delete(
   "/:title",
   expressAsyncHandler(async (req, res) => {
-    const gameTitle = req.params.url_slug;
+    const slug = req.params.url_slug;
 
     //const games = await Games.findById(req.params.id);
-    const games = await Games.findOne({where: {title: gameTitle}})
+    const games = await Games.findOne({where: {url_slug: slug}})
     if (games) {
       const deleteGames = await games.remove();
       res.send({ message: "Games Deleted", games: deleteGames });

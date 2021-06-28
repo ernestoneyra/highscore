@@ -7,7 +7,7 @@ export default function GameDetail({ scores, games, homeScore }) {
 
   const game = games.find((game) => game.url_slug === slug);
 
-console.log('gamedetail', game)
+console.log('gamedetail', slug)
  
   return (
     <>

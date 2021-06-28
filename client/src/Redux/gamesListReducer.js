@@ -3,6 +3,8 @@ const initialState = {
     games: [],
   };
 
+  
+
 export const gamesListReducer = (
     state = initialState,
     action
@@ -20,8 +22,8 @@ export const gamesListReducer = (
       
             //console.log(newState);
       
-            console.log("games invoked", game);
-            return newState;
+            console.log("games invoked", action.payload.scores);
+            return state;
           }
       default:
         return state;
