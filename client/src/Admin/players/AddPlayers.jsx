@@ -14,30 +14,30 @@ export default function AddPlayers() {
         <Col className="col-6">
           <h1>Lägg till spelare</h1>
           <form>
-            <div class="mb-3">
-              <label htmFor="firstname" class="form-label">
+            <div className="mb-3">
+              <label htmlFor="firstname" className="form-label">
                 Förnamn
               </label>
-              <input type="text" class="form-control" id="firstname" />
+              <input type="text" className="form-control" id="firstname" />
             </div>
-            <div class="mb-3">
-              <label htmFor="lastname" class="form-label">
+            <div className="mb-3">
+              <label htmlFor="lastname" className="form-label">
                 Efternamn
               </label>
-              <input type="text" class="form-control" id="lastfirstname" />
+              <input type="text" className="form-control" id="lastfirstname" />
             </div>
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">
+            <div className="mb-3">
+              <label htmlFor="exampleInputEmail1" className="form-label">
                 Email address
               </label>
               <input
                 type="email"
-                class="form-control"
+                className="form-control"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
               />
             </div>
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" className="btn btn-primary">
               Lägg till
             </button>
           </form>

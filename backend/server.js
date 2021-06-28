@@ -1,47 +1,33 @@
-import express from "express";
-import mongoose from "mongoose";
-import productRouter from "./routers/productRouter.js";
-import userRouter from "./routers/userRouter.js";
-import orderRouter from "./routers/orderRouter.js";
-import dotenv from "dotenv";
-import uploadRouter from "./routers/uploadRouter.js";
-import path from "path";
+const express = require('express')
+const cors = require('cors')
+const expressAsyncHandler = require('express-async-handler')
+const morgan = require('morgan')
 
-dotenv.config();
+const highscoresRouter = require('./routes/admin/highscoresRouter.js')
+const gamesRouter = require('./routes/admin/gamesRouter.js')
+const playersRouter = require('./routes/admin/playersRouter.js')
+
 
 const app = express();
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+//API
+app.use("/api/games", gamesRouter);
+app.use("/api/scores", highscoresRouter);
+app.use('/api/players', playersRouter)
 
-mongoose.connect(process.env.MONGODB_URL || "mongodb://localhost/amaclon", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-});
 
-app.use("/api/uploads", uploadRouter);
-app.use("/api/users", userRouter);
-app.use("/api/products", productRouter);
-app.use("/api/orders", orderRouter);
+//middleware
+app.use(cors())
+app.use(express.json())
 
-app.get("/api/config/paypal", (req, res) => {
-  res.send(process.env.PAYPAL_CLIENT_ID || "sb");
-});
+//ROUTES highscores
+/* app.get('/seed', (req, res) => {
+    
+}) */
 
-//concate the upload folder to the current folder.
-const __dirname = path.resolve();
-app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
-app.get("/", (req, res) => {
-  res.send("Server is ready");
-});
+//
 
-app.use((err, req, res, next) => {
-  res.status(500).send({ message: err.message });
-});
-
-const port = process.env.PORT || 5000;
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
-});
+app.listen(5000, () => {
+    console.log('server listening on port 5000')
+})

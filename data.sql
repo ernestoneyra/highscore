@@ -37,20 +37,20 @@ VALUES
 ('Adam', 'Carter', 'cadam@gmail.com');
 
 
-DROP TABLE IF EXISTS "highscores";
+DROP TABLE IF EXISTS "scores";
 
-CREATE TABLE "highscores" (
+CREATE TABLE "scores" (
   id INTEGER GENERATED ALWAYS AS IDENTITY,
   game VARCHAR(50) NOT NULL,
   firstname VARCHAR(50) NOT NULL,
   lastname VARCHAR(50) NOT NULL,
   date VARCHAR(50) NOT NULL,
   highscore NUMERIC(50) NOT NULL,
-  urlSlug VARCHAR(50) NOT NULL,
+  url_slug VARCHAR(50) NOT NULL,
   PRIMARY KEY (id)
 );
 
-INSERT INTO "highscores" (game, firstname, lastname, date, highscore, urlSlug)
+INSERT INTO "scores" (game, firstname, lastname, date, highscore, url_slug)
 VALUES
 ('Tetris', 'John', 'Adams', '2019-01-01', 100000, 'tetris'),
 ('Pacman', 'Jane', 'Doe', '2019-02-02', 120000, 'pacman'),

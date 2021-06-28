@@ -5,7 +5,7 @@ const sequelize = new Sequelize('postgres://postgres:secretpassword@localhost:54
 class Games extends Model {}
 
 Games.init({
-    name: {
+    title: {
         type: DataTypes.STRING,
         allowNull: false
     },
@@ -36,3 +36,4 @@ Games.init({
 });
 
 module.exports = Games;
+

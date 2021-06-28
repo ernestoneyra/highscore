@@ -5,8 +5,10 @@ import Scoreblock2 from "../ScoreBlock2/ScoreBlock2";
 export default function GameDetail({ scores, games, homeScore }) {
   const { slug } = useParams();
 
-  const game = games.find((game) => game.urlSlug === slug);
+  const game = games.find((game) => game.url_slug === slug);
 
+console.log('gamedetail', game)
+ 
   return (
     <>
       <nav className="navbar navbar-dark bg-info d-flex justify-content-center mb-4">
@@ -20,12 +22,12 @@ export default function GameDetail({ scores, games, homeScore }) {
       <div className="container">
         <div className=" d-flex">
           <div className="row">
-            <h1>{game.game}</h1>
+            <h1>{game.title}</h1>
             <p className="">{game.description}</p>
             <p className="">{game.genre}</p>
             <p className="">{game.release_year}</p>
           </div>
-          <img className="ms-3 w-50" src={game.imageUrl} alt={game.game} />
+          <img className="ms-3 w-50" src={game.image_url} alt={game.title} />
         </div>
 
         <div className="d-flex justify-content-center">

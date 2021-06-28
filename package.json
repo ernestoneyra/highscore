@@ -4,10 +4,13 @@
   "description": "Highscore",
   "main": "index.js",
   "dependencies": {
+    "axios": "^0.21.1",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "csstype": "^3.0.7",
     "express": "^4.17.1",
+    "express-async-handler": "^1.1.4",
+    "express-session": "^1.17.2",
     "hoist-non-react-statics": "^3.3.2",
     "js-tokens": "^4.0.0",
     "loose-envify": "^1.4.0",

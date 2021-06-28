@@ -9,7 +9,11 @@ Scores.init({
         type: DataTypes.STRING,
         allowNull: false
     },
-    playername: {
+    firstname: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    lastname: {
         type: DataTypes.STRING,
         allowNull: false
     },

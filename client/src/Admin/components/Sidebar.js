@@ -83,8 +83,8 @@ export default function Sidebar() {
               <img src="./cute.jpg" alt="highscore"></img>
             </div>
             <div className="col-5 mb-1">
-              <Link to={"/admin/addhighscore"} className="black">
-                <h5>Lägg till highscore</h5>
+              <Link to={"/admin/listhighscore"} className="black">
+                <h5>Lista highscore</h5>
               </Link>
             </div>
           </Row>
@@ -93,8 +93,8 @@ export default function Sidebar() {
               <img src="./cute.jpg" alt="highscore"></img>
             </div>
             <div className="col-6 mb-5">
-              <Link to={"/admin/listhighscore"} className="black">
-                <h5>Lista highscore</h5>
+              <Link to={"/admin/addhighscore"} className="black">
+                <h5>Lägg till highscore</h5>
               </Link>
             </div>
           </Row>

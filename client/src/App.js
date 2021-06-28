@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 //import {  useEffect } from "react";
 import React from "react";
 import Home from "./Home";
-import RegHighscore from "./RegHighscore";
+//import RegHighscore from "./RegHighscore";
 import "bootstrap/dist/css/bootstrap.min.css";
 import GameDetail from "./GameDetail/GameDetail";
 import { connect } from "react-redux";
@@ -25,15 +25,15 @@ const App = (props) => {
   /*  let scores = useSelector(state => state.scores);
   let games = useSelector(state => state.games); */
 
-  console.log("props", props);
+
 
   return (
     <>
       <Router>
         <Switch>
-          <Route exact path="/new">
+        {/*   <Route exact path="/new">
             <RegHighscore scores={props.scores} />
-          </Route>
+          </Route> */}
           <Route path="/games/:slug">
             <GameDetail scores={props.scores} games={props.games} />
           </Route>
