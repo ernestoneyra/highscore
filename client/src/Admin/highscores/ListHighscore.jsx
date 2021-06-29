@@ -10,7 +10,7 @@ export default function ListHighscore() {
 
   const getScores = async () => {
     try {
-      const {data} = await axios.get("http://localhost:5000/api/scores/scores");
+      const {data} = await axios.get("http://localhost:5000/api/scores/");
       const scores = data
       //const scores = await response.json();
 
@@ -23,6 +23,7 @@ export default function ListHighscore() {
   useEffect(() => {
     getScores();
   }, []);
+
 
   return (
     <>
@@ -48,7 +49,7 @@ export default function ListHighscore() {
                 <tr key={score.id}>
                   <td>{score.id} </td>
                   <td>{score.game} </td>
-                  <td>{`${score.firstname} ${score.lastname}`} </td>
+                  <td>{score.fullname} </td>
                   <td>{score.date} </td>
                   <td>{score.highscore} </td>
                 </tr>
@@ -57,8 +58,8 @@ export default function ListHighscore() {
           </table>
         </Col>
         <Col>
-          <Link to={"/admin/addplayers"}>
-            <Button> Nytt Highscore</Button>
+          <Link to={"/admin/addhighscore"}>
+            <Button className="mt-2"> Nytt Highscore</Button>
           </Link>
         </Col>
       </Row>

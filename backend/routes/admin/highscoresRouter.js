@@ -7,8 +7,9 @@ const Scores = require('../../models/scores.js')
 
 const scoresRouter = express.Router();
 
+///////////////GET////////////////
 scoresRouter.get(
-  "/scores",
+  "/",
   expressAsyncHandler(async (req, res) => {
     const scores = await Scores.findAll({});
     res.send(scores);
@@ -31,26 +32,34 @@ scoresRouter.get(
     }
   })
 );
+///////////////////////////////////////////
 
+/////////////////////POST////////////////
 scoresRouter.post(
   "/",
   expressAsyncHandler(async (req, res) => {
+    const game = req.body.game
+    const fullname = req.body.fullname
+    const date = req.body.date
+    const highscore = req.body.highscore
+
     const scores = new Scores({
-      title: "sample title " + Date.now(),
-      genre: "sample genre",
-      description: "sample description",
-      release_year: 0,
-      image_url: "/images/p1.jpg",
-      url_Slug: "game-here"
+      game,
+      fullname,
+      date,
+      highscore,
+      url_slug: generateUrlSlug(game),
     });
     const createdScores = await scores.save();
     //passing the createdscores to frontend
     res.send({ message: "Score created", scores: createdScores });
   })
 );
+///////////////////////////////////////////
 
+////////////////////PUT//////////////
 scoresRouter.put(
-  "/url_slug",
+  "/:url_slug",
   expressAsyncHandler(async (req, res) => {
     const scoresSlug = req.params.id;
     const scores = await Product.findById(scoresSlug);
@@ -68,9 +77,11 @@ scoresRouter.put(
     }
   })
 );
+////////////////////////////////////////
 
+///////////////////DELETE//////////////////
 scoresRouter.delete(
-  "/:game",
+  "/:title",
   expressAsyncHandler(async (req, res) => {
     const gameScore = req.params.url_slug;
 
@@ -84,6 +95,11 @@ scoresRouter.delete(
     }
   })
 );
+//////////////////////////////////////////
+
+function generateUrlSlug(game) {
+  return game.replace("-", "").replace(" ", "-").toLowerCase();
+}
 
 module.exports = scoresRouter
 //export default gamesRouter;

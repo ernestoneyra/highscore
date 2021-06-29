@@ -26,15 +26,16 @@ CREATE TABLE "players" (
   id INTEGER GENERATED ALWAYS AS IDENTITY,
   firstname VARCHAR(50) NOT NULL,
   lastname VARCHAR(50) NOT NULL,
+  fullname VARCHAR(50) NOT NULL,
   email VARCHAR(50) NOT NULL,
   PRIMARY KEY (id)
 );
 
-INSERT INTO "players" (firstname, lastname, email) 
+INSERT INTO "players" (firstname, lastname, fullname, email) 
 VALUES
-('John', 'Adams', 'jadams@gmail.com'),
-('Jane', 'Doe', 'doejane@gmail.com'),
-('Adam', 'Carter', 'cadam@gmail.com');
+('John', 'Adams', 'John Adams', 'jadams@gmail.com'),
+('Jane', 'Doe', 'Jane Doe', 'doejane@gmail.com'),
+('Adam', 'Carter','Adam Carter', 'cadam@gmail.com');
 
 
 DROP TABLE IF EXISTS "scores";
@@ -42,17 +43,35 @@ DROP TABLE IF EXISTS "scores";
 CREATE TABLE "scores" (
   id INTEGER GENERATED ALWAYS AS IDENTITY,
   game VARCHAR(50) NOT NULL,
-  firstname VARCHAR(50) NOT NULL,
-  lastname VARCHAR(50) NOT NULL,
+  fullname VARCHAR(50) NOT NULL,
   date VARCHAR(50) NOT NULL,
   highscore NUMERIC(50) NOT NULL,
   url_slug VARCHAR(50) NOT NULL,
   PRIMARY KEY (id)
 );
 
-INSERT INTO "scores" (game, firstname, lastname, date, highscore, url_slug)
+INSERT INTO "scores" (game, fullname, date, highscore, url_slug)
 VALUES
-('Tetris', 'John', 'Adams', '2019-01-01', 100000, 'tetris'),
-('Pacman', 'Jane', 'Doe', '2019-02-02', 120000, 'pacman'),
-('Asteroids', 'Adam', 'Carter', '2019-03-03', 130000, 'asteroids');
+('Tetris', 'John Adams', '2019-01-01', 100000, 'tetris'),
+('Pacman', 'Jane Doe', '2019-02-02', 120000, 'pacman'),
+('Asteroids', 'Adam Carter', '2019-03-03', 130000, 'asteroids');
 
+DROP TABLE IF EXISTS "genre";
+
+CREATE TABLE "genre" (
+  id INTEGER GENERATED ALWAYS AS IDENTITY,
+  genre VARCHAR(50) NOT NULL,
+  PRIMARY KEY (id)
+);
+
+INSERT INTO "genre" (genre)
+VALUES 
+('Puzzle'),
+('Platform'),
+('Shooter'),
+('Action'),
+('Adventure'),
+('Racing'),
+('Roleplay');
+
+SELECT * FROM genre;

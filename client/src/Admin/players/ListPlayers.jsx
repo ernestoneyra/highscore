@@ -11,7 +11,7 @@ export default function ListPlayers() {
   const getPlayers = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:5000/api/players/players"
+        "http://localhost:5000/api/players/"
       );
       const players = data;
 

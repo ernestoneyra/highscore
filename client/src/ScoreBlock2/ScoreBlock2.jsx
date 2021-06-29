@@ -20,7 +20,7 @@ const Scoreblock2 = ({ scores }) => {
         {sortedScores.map((score) => (
           <div key={score.id} className="border p-3 mb-2">
             <div className="mt-2">
-              <strong>{`${score.firstname} ${score.lastname}`} </strong>,{" "}
+              <strong>{score.fullname} </strong>{" "}
               {score.date}
               <p className="float-end">{score.highscore} p</p>
             </div>

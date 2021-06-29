@@ -7,6 +7,7 @@ const morgan = require('morgan')
 const highscoresRouter = require('./routes/admin/highscoresRouter.js')
 const gamesRouter = require('./routes/admin/gamesRouter.js')
 const playersRouter = require('./routes/admin/playersRouter.js')
+const genreRouter = require('./routes/admin/genreRouter.js')
 
 
 const app = express();
@@ -20,6 +21,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use("/api/games", gamesRouter);
 app.use("/api/scores", highscoresRouter);
 app.use('/api/players', playersRouter)
+app.use('/api/genre', genreRouter)
 
 
 

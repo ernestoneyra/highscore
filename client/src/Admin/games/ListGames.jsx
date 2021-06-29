@@ -11,7 +11,7 @@ export default function ListGames() {
 
   const getGames = async () => {
     try {
-      const { data } = await axios.get("http://localhost:5000/api/games/games");
+      const { data } = await axios.get("http://localhost:5000/api/games/");
       const games = data;
 
       setGames(games);
@@ -24,7 +24,7 @@ export default function ListGames() {
     getGames();
   }, []);
 
-  console.log('listgames', games)
+  
   return (
     <>
       <Navbar />

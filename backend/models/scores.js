@@ -9,11 +9,7 @@ Scores.init({
         type: DataTypes.STRING,
         allowNull: false
     },
-    firstname: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    lastname: {
+    fullname: {
         type: DataTypes.STRING,
         allowNull: false
     },

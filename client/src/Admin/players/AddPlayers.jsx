@@ -1,9 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
+import { useHistory } from "react-router";
+import axios from "axios";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import { Row, Col } from "react-bootstrap";
 
 export default function AddPlayers() {
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [email, setEmail] = useState("");
+
+  const history = useHistory()
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    const fullname = firstname + " " + lastname
+    
+    axios
+      .post(`http://localhost:5000/api/players/`, {
+        firstname,
+        lastname,
+        fullname,
+        email,
+      })
+      .then(() => {
+        //alert("successful post");
+        history.push('/admin/listplayers')
+      });
+     
+  };
+
   return (
     <>
       <Navbar />
@@ -13,28 +39,44 @@ export default function AddPlayers() {
         </Col>
         <Col className="col-6">
           <h1>Lägg till spelare</h1>
-          <form>
+          <form onSubmit={submitHandler}>
             <div className="mb-3">
               <label htmlFor="firstname" className="form-label">
                 Förnamn
               </label>
-              <input type="text" className="form-control" id="firstname" />
+              <input
+                type="text"
+                className="form-control"
+                id="firstname"
+                placeholder=""
+                value={firstname}
+                onChange={(e) => setFirstname(e.target.value)}
+              />
             </div>
             <div className="mb-3">
               <label htmlFor="lastname" className="form-label">
                 Efternamn
               </label>
-              <input type="text" className="form-control" id="lastfirstname" />
+              <input
+                type="text"
+                className="form-control"
+                id="lastfirstname"
+                placeholder=""
+                value={lastname}
+                onChange={(e) => setLastname(e.target.value)}
+              />
             </div>
             <div className="mb-3">
-              <label htmlFor="exampleInputEmail1" className="form-label">
+              <label htmlFor="email" className="form-label">
                 Email address
               </label>
               <input
                 type="email"
                 className="form-control"
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
+                id="email"
+                placeholder=""
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <button type="submit" className="btn btn-primary">
