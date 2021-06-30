@@ -1,7 +1,13 @@
+import { Link } from "react-router-dom";
+import '../styles/global.css'
+
 const Navbar = () => {
     return (
-        <nav className="navbar navbar-dark bg-info d-flex justify-content-center mb-4">
-        <span className="navbar-brand mb-0"><h1>High Score</h1></span>
+        <nav className="navbar navbar-dark bg-success d-flex justify-content-center mb-3 pt-4">
+        <Link to={"/"} className="white">
+        <span className="navbar-brand"><h1>High Score</h1></span>
+          </Link>
+
 </nav>
     )
 }

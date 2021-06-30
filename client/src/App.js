@@ -16,6 +16,8 @@ import ViewGames from "./Admin/games/ViewGames";
 import UpdateGames from "./Admin/games/UpdateGames";
 import AddHighscore from "./Admin/highscores/AddHighscore";
 import ListHighscore from "./Admin/highscores/ListHighscore";
+import SearchResult from "./SearchResult/SearchResult";
+
 
 if (module.hot) {
   module.hot.accept();
@@ -29,6 +31,7 @@ const App = (props) => {
 
   return (
     <>
+   
       <Router>
         <Switch>
         {/*   <Route exact path="/new">
@@ -37,6 +40,7 @@ const App = (props) => {
           <Route path="/games/:slug">
             <GameDetail scores={props.scores} games={props.games} />
           </Route>
+          <Route path="/search" component={SearchResult}/>
           <Route path="/admin/games/:slug" component={ViewGames} />
           <Route path="/admin/listplayers" component={ListPlayers} />
           <Route path="/admin/addplayers" component={AddPlayers} />
@@ -47,12 +51,14 @@ const App = (props) => {
           <Route path="/admin/addhighscore" component={AddHighscore} />
           <Route path="/admin/listhighscore" component={ListHighscore} />
           <Route exact path="/admin" component={AdminScreen} />
+          
 
           <Route path="/">
             <Home scores={props.scores} games={props.games} />
           </Route>
         </Switch>
       </Router>
+   
     </>
   );
 };

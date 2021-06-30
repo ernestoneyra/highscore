@@ -16,3 +16,9 @@ p:first-letter {
     text-decoration: none;
  
 }
+
+img {
+    max-width: 40%;
+    max-height: auto;
+   
+}

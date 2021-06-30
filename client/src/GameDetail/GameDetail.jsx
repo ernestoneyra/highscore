@@ -1,6 +1,8 @@
 import React from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams} from "react-router-dom";
 import Scoreblock2 from "../ScoreBlock2/ScoreBlock2";
+import '../styles/global.css'
+import Navbar from "../Navbar/Navbar";
 
 export default function GameDetail({ scores, games, homeScore }) {
   const { slug } = useParams();
@@ -11,13 +13,14 @@ console.log('gamedetail', slug)
  
   return (
     <>
-      <nav className="navbar navbar-dark bg-info d-flex justify-content-center mb-4">
+     {/*  <nav className="navbar navbar-dark bg-info d-flex justify-content-center mb-4">
         <span className="navbar-brand mb-0">
           <Link to={"/"}>
-            <h1 className="text-white">High Score</h1>
+            <h1 className="text-white black">High Score</h1>
           </Link>
         </span>
-      </nav>
+      </nav> */}
+      <Navbar />
 
       <div className="container">
         <div className=" d-flex">
