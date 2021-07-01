@@ -4,15 +4,18 @@ import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import { Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router";
 
 export default function ViewGames(props) {
   const [games, setGames] = useState([]);
   const slug = props.match.params.slug;
 
+  const history = useHistory();
+
   const getGames = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:5000/api/games/${slug}`
+        `http://localhost:5000/api/games/admin/${slug}`
       );
       const games = data;
 
@@ -26,7 +29,19 @@ export default function ViewGames(props) {
     getGames();
   }, []);
 
-  
+  const deleteGames = async (slug) => {
+   
+    try {
+       await axios.delete(
+        `http://localhost:5000/api/games/admin/${slug}`
+      );
+      alert("success delete")
+      history.push("/admin/listgames")
+    } catch (err) {
+      alert("failed delete")
+      console.log("delete err", err.message);
+    }
+  };
 
   return (
     <>
@@ -92,7 +107,11 @@ export default function ViewGames(props) {
                 </button>
               </Link>
 
-              <button type="submit" className="btn btn-primary ms-4">
+              <button
+                type="submit"
+                onClick={() => deleteGames(slug)}
+                className="btn btn-primary ms-4"
+              >
                 Radera
               </button>
             </form>

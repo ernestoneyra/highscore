@@ -3,7 +3,7 @@ import axios from "axios";
 import Navbar from "../Navbar/Navbar";
 import { Container, Row, Col } from "react-bootstrap";
 import "../styles/global.css";
-import Searchbar from "../SearchBar/Searchbar";
+//import Searchbar from "../SearchBar/Searchbar";
 
 export default function SearchResult(props) {
   const [games, setGames] = useState([]);
@@ -39,7 +39,7 @@ export default function SearchResult(props) {
       <Container>
      <h1>Sök spel</h1>
      
-        <Searchbar />
+       {/*  <Searchbar /> */}
         <div>
           {games.length < 2 ? (
             <h1>{`Hittade ${games.length} träff på `}</h1>

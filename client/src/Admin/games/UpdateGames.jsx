@@ -33,7 +33,7 @@ export default function UpdateGames(props) {
   const getGames = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:5000/api/games/${slug}`
+        `http://localhost:5000/api/games/admin/${slug}`
       );
       const games = data;
 

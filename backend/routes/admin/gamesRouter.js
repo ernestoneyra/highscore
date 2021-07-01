@@ -12,14 +12,17 @@ gamesRouter.get(
   "/",
   expressAsyncHandler(async (req, res) => {
     const games = await Games.findAll({});
-
-    res.send(games);
+    if (games) {
+      res.send(games);
+    } else {
+      res.status(404).send({ message: "No games found" });
+    }
   })
 );
 
 ////GET ONE GAME////////////
-/* gamesRouter.get(
-  "/:url_slug",
+gamesRouter.get(
+  "/admin/:url_slug",
   expressAsyncHandler(async (req, res) => {
     const gameurl_slug = req.params.url_slug;
 
@@ -28,10 +31,10 @@ gamesRouter.get(
     if (games) {
       res.json(games);
     } else {
-      res.status(404).send({ message: "" });
+      res.status(404).send({ message: "Game not found" });
     }
   })
-); */
+);
 
 /* gamesRouter.get("/search", expressAsyncHandler( async (req, res) => {
   const  title  = req.query.q;
@@ -49,25 +52,25 @@ gamesRouter.get(
     .catch((err) => res.status(404).send({ message: err }));
 })); */
 
- gamesRouter.get('/search', expressAsyncHandler(async (req, res) => {
-
-  const searchTerm = req.query.q;
+gamesRouter.get(
+  "/search",
+  expressAsyncHandler(async (req, res) => {
+    const searchTerm = req.query.q;
 
     const games = await Games.findAll({
-        where: {
-           title: {
-              [Sequelize.Op.iLike]: `%${searchTerm}%`
-            }
-          }
+      where: {
+        title: {
+          [Sequelize.Op.iLike]: `%${searchTerm}%`,
+        },
+      },
     });
     if (games) {
-   res.send(games)
-  
-    }else{
+      res.send(games);
+    } else {
       res.status(404).send({ message: "Games Not Found" });
     }
-
-})) 
+  })
+);
 
 //////ADD GAME/////////////
 gamesRouter.post(
@@ -117,14 +120,14 @@ gamesRouter.put(
 
 ////////////////DELETE GAME////////////////
 gamesRouter.delete(
-  "/:title",
+  "/admin/:url_slug",
   expressAsyncHandler(async (req, res) => {
     const slug = req.params.url_slug;
 
     //const games = await Games.findById(req.params.id);
     const games = await Games.findOne({ where: { url_slug: slug } });
     if (games) {
-      const deleteGames = await games.remove();
+      const deleteGames = await games.destroy();
       res.send({ message: "Games Deleted", games: deleteGames });
     } else {
       res.status(404).send({ message: "Games Not Found" });
